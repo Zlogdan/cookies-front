@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './css/App.css';
+import {Link, Redirect, Route, Switch} from "react-router-dom";
+import Home from "./routes/Home";
+import {Nav, Navbar} from 'react-bootstrap';
+import Fake from "./routes/Fake";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+//при возникновении надоедливых ошибок про лицензию
+//закоментировать в файле node_modules/@material-ui/x-license/dist/esm/index.js строку
+// console.error(["********************
+
+const NavBar = () => (
+    <div>
+        <Navbar bg="dark" variant="dark" className="mb-4">
+            <Nav className="mr-auto">
+                <li><Link className="navbar-brand" to='/'>Линия производства печенья</Link></li>
+                <li><Link className="nav-link" to='/fake'>Эмулятор оборудования</Link></li>
+            </Nav>
+        </Navbar>
     </div>
-  );
+)
+
+const Main = () => (
+    <main>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/fake' component={Fake}/>
+            <Redirect to="/"/>
+        </Switch>
+    </main>
+)
+
+class App extends React.Component {
+    render() {
+        return (
+            <div className="App">
+                <NavBar/>
+                <Main/>
+            </div>
+        );
+    }
 }
 
 export default App;
