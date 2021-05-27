@@ -1,8 +1,14 @@
-import FakeControllers from "../components/FakeControllers";
+import FakeControllers from "../components/fake/FakeControllers";
+import {Component} from "react";
 
-const Fake = () => (
-    <div>
-        <FakeControllers/>
-    </div>
-)
+class Fake extends Component {
+    render() {
+        return (
+            <div>
+                <FakeControllers/>
+            </div>
+        );
+    }
+}
+
 export default Fake

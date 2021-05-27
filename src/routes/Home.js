@@ -1,6 +1,9 @@
+import HomePage from "../components/HomePage";
+
 const Home = () => (
     <div>
-        <h1>ZINA is not adminka</h1>
+        <h1>Главная</h1>
+        <HomePage/>
     </div>
 )
 export default Home
