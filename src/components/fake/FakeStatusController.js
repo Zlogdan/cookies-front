@@ -1,10 +1,10 @@
 import {Paper} from "@material-ui/core";
 
-const FakeTimeController = () => (
+const FakeStatusController = () => (
     <div>
         <Paper className="bg-light mb-3">
-            me
+            Статус устройств и время ответа
         </Paper>
     </div>
 )
-export default FakeTimeController
+export default FakeStatusController

@@ -1,15 +1,15 @@
-import {Grid, Paper} from "@material-ui/core";
-import FakeTimeController from "./FakeTimeController";
+import {Grid} from "@material-ui/core";
 import FakeStatusController from "./FakeStatusController";
+import FakeWorkController from "./FakeWorkController";
 
 const FakeControllers = () => (
     <div>
         <Grid container spacing={2}>
             <Grid item xs={6}>
-                <FakeTimeController/>
+                <FakeStatusController/>
             </Grid>
             <Grid item xs={6}>
-                <FakeStatusController/>
+                <FakeWorkController/>
             </Grid>
         </Grid>
     </div>

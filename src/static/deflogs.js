@@ -1,10 +1,9 @@
-export const defParams =   {
-    "id": 1,
-    "name": "Стандарт",
-    "mixerPower": 5,
-    "mixerTime": 6,
-    "furnaceTemperature": 2,
-    "furnaceTime": 3,
-    "holdTime": 4,
-    "acceptableDeviation": 1
-}
+export const defLogs = [{
+    "id": 0,
+    "processId": "нет",
+    "startTime": "",
+    "finishTime": "",
+    "status": "",
+    "comment": "",
+    "operation": "Выберите существующий processId"
+}]

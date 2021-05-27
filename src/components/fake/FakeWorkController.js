@@ -1,10 +1,10 @@
 import {Paper} from "@material-ui/core";
 
-const FakeStatusController = () => (
+const FakeWorkController = () => (
     <div>
         <Paper className="bg-light mb-3">
             Status
         </Paper>
     </div>
 )
-export default FakeStatusController
+export default FakeWorkController
