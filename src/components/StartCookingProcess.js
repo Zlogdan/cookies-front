@@ -1,4 +1,4 @@
-import {Button, Grid, Paper, TextField} from "@material-ui/core";
+import {Button, Grid, Paper, TextField, Typography} from "@material-ui/core";
 import {Component} from "react";
 import axios from "axios";
 import {Autocomplete} from "@material-ui/lab";
@@ -11,10 +11,10 @@ class StartCookingProcess extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            recipes: null,
+            recipes: [defRecipe,],
             currentRecipe: defRecipe,
             params: null,
-            currentParam: defParams,
+            currentParam: defRecipe.hardwareParameters,
             processId: "",
             processCount:0,
         };
@@ -22,7 +22,7 @@ class StartCookingProcess extends Component {
 
     componentDidMount() {
         this.getAllRecipe();
-        this.getAllParams();
+        // this.getAllParams();
         // this.getProcessCount();
     }
     // //
@@ -43,17 +43,21 @@ class StartCookingProcess extends Component {
                     recipes: response.data,
                 })
             })
-    }
-
-    getAllParams() {
-        let self = this
-        axios.get(url + 'get-all-params', {})
-            .then((response) => {
-                self.setState({
-                    params: response.data,
-                })
+            .catch(e=>{
+                console.log(e)
+                console.log("Ошибка получения рецептов")
             })
     }
+
+    // getAllParams() {
+    //     let self = this
+    //     axios.get(url + 'get-all-params', {})
+    //         .then((response) => {
+    //             self.setState({
+    //                 params: response.data,
+    //             })
+    //         })
+    // }
 
     getCamundaProcess() {
         let self = this
@@ -91,6 +95,7 @@ class StartCookingProcess extends Component {
                                 if (newValue != null) {
                                     this.setState({
                                         currentRecipe: newValue,
+                                        currentParam: newValue.hardwareParameters,
                                     })
                                 }
                             }}
@@ -100,57 +105,43 @@ class StartCookingProcess extends Component {
                     </Grid>
                     <Grid item xs={2}>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField value={this.state.currentRecipe.id} id="id" label="Ид"
-                                       defaultValue="id"/>
-                            <TextField value={this.state.currentRecipe.name} id="name" label="Назвние"
-                                       defaultValue="name"/>
-                            <TextField value={this.state.currentRecipe.flour} id="flour" label="Мука/кг"
-                                       defaultValue="flour"/>
-                            <TextField value={this.state.currentRecipe.water} id="water" label="Вода/литр"
-                                       defaultValue="water"/>
-                            <TextField value={this.state.currentRecipe.bakingPowder} id="bakingPowder"
-                                       label="Разрыхлитель/кг" defaultValue="bakingPowder"/>
-                            <TextField value={this.state.currentRecipe.ferment} id="ferment" label="Дрожжи/кг"
-                                       defaultValue="ferment"/>
-                            <TextField value={this.state.currentRecipe.additive} id="additive" label="Добавки"
-                                       defaultValue="additive"/>
-                            <TextField value={this.state.currentRecipe.additiveCount} id="additiveCount"
-                                       label="Добавки кол./кг" defaultValue="additiveCount"/>
-                            <TextField value={this.state.currentRecipe.sugar} id="sugar" label="Сахар/кг"
-                                       defaultValue="sugar"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.id} id="id" label="Номер рецепта"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.name} id="name" label="Назвние"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.flour} id="flour" label="Мука/кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.water} id="water" label="Вода/литр"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.bakingPowder} id="bakingPowder" label="Разрыхлитель/кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.ferment} id="ferment" label="Дрожжи/кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additive} id="additive" label="Добавки"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additiveCount} id="additiveCount" label="Добавки кол./кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.sugar} id="sugar" label="Сахар/кг"/>
                         </Paper>
                     </Grid>
-                    <Grid item xs={3}>
-                        <Autocomplete
-                            size="small"
-                            options={this.state.params}
-                            getOptionLabel={(option) => option.name}
-                            onChange={(event, newValue) => {
-                                if (newValue != null) {
-                                    this.setState({
-                                        currentParam: newValue,
-                                    })
-                                }
-                            }}
-                            renderInput={(params) =>
-                                <TextField {...params} label="Выберите конфигурацию" variant="outlined"/>}
-                        />
-                    </Grid>
+                    {/*<Grid item xs={3}>*/}
+                    {/*    <Autocomplete*/}
+                    {/*        size="small"*/}
+                    {/*        options={this.state.params}*/}
+                    {/*        getOptionLabel={(option) => option.name}*/}
+                    {/*        onChange={(event, newValue) => {*/}
+                    {/*            if (newValue != null) {*/}
+                    {/*                this.setState({*/}
+                    {/*                    currentParam: newValue,*/}
+                    {/*                })*/}
+                    {/*            }*/}
+                    {/*        }}*/}
+                    {/*        renderInput={(params) =>*/}
+                    {/*            <TextField {...params} label="Выберите конфигурацию" variant="outlined"/>}*/}
+                    {/*    />*/}
+                    {/*</Grid>*/}
                     <Grid item xs={2}>
+                        <Typography variant="h5" component="h2">Конфигурация оборудования</Typography>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField value={this.state.currentParam.id} id="id" label="Ид"/>
-                            <TextField value={this.state.currentParam.name} id="name" label="Название"/>
-                            <TextField value={this.state.currentParam.mixerPower} id="mixerPower"
-                                       label="Мощность миксера"/>
-                            <TextField value={this.state.currentParam.mixerTime} id="mixerTime"
-                                       label="Время работы миксера"/>
-                            <TextField value={this.state.currentParam.furnaceTemperature} id="furnaceTemperature"
-                                       label="Температура печи"/>
-                            <TextField value={this.state.currentParam.furnaceTime} id="furnaceTime"
-                                       label="Время работы печи"/>
-                            <TextField value={this.state.currentParam.holdTime} id="holdTime" label="Время ожидпния"/>
-                            <TextField value={this.state.currentParam.acceptableDeviation} id="acceptableDeviation"
-                                       label="Допустимое отклонение"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.id} id="id" label="Номер конфигурации"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.name} id="name" label="Название"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.mixerPower} id="mixerPower" label="Мощность миксера"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.mixerTime} id="mixerTime" label="Таймер миксера"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTemperature} id="furnaceTemperature" label="Температура печи"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTime} id="furnaceTime" label="Время работы печи"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.holdTime} id="holdTime" label="Время ожидания"/>
                         </Paper>
                     </Grid>
                     <Grid item xs={3}>
@@ -161,7 +152,7 @@ class StartCookingProcess extends Component {
                         >Старт процесса
                         </Button>
                         <TextField fullWidth={true} value={this.state.processId} id="processId" label="id процесса"/>
-                        После запуска сверните этот акаридон и откройте следующий с отоброжением логов запущегоно процесса
+                        После запуска сверните этот аккаридон и откройте следующий, с отоброжением логов запущеного процесса
                     </Grid>
                 </Grid>
             </div>
