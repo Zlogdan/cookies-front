@@ -152,7 +152,7 @@ class StartCookingProcess extends Component {
                         >Старт процесса
                         </Button>
                         <TextField fullWidth={true} value={this.state.processId} id="processId" label="id процесса"/>
-                        После запуска сверните этот аккаридон и откройте следующий, с отоброжением логов запущеного процесса
+                        После запуска сверните этот аккаридон и откройте следующий, с таблицей логов запущеного процесса
                     </Grid>
                 </Grid>
             </div>
