@@ -106,13 +106,13 @@ class StartCookingProcess extends Component {
                     <Grid item xs={2}>
                         <Paper className="bg-light pb-2 pt-2">
                             <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.id} id="id" label="Номер рецепта"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.name} id="name" label="Назвние"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.name} id="name" label="Название"/>
                             <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.flour} id="flour" label="Мука/кг"/>
                             <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.water} id="water" label="Вода/литр"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.bakingPowder} id="bakingPowder" label="Разрыхлитель/кг"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.ferment} id="ferment" label="Дрожжи/кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.bakingPowder} id="bakingPowder" label="Разрыхлитель/гр"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.ferment} id="ferment" label="Дрожжи/гр"/>
                             <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additive} id="additive" label="Добавки"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additiveCount} id="additiveCount" label="Добавки кол./кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additiveCount} id="additiveCount" label="Добавки кол./гр"/>
                             <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.sugar} id="sugar" label="Сахар/кг"/>
                         </Paper>
                     </Grid>
