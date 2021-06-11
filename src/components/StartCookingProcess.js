@@ -116,22 +116,6 @@ class StartCookingProcess extends Component {
                             <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.sugar} id="sugar" label="Сахар/кг"/>
                         </Paper>
                     </Grid>
-                    {/*<Grid item xs={3}>*/}
-                    {/*    <Autocomplete*/}
-                    {/*        size="small"*/}
-                    {/*        options={this.state.params}*/}
-                    {/*        getOptionLabel={(option) => option.name}*/}
-                    {/*        onChange={(event, newValue) => {*/}
-                    {/*            if (newValue != null) {*/}
-                    {/*                this.setState({*/}
-                    {/*                    currentParam: newValue,*/}
-                    {/*                })*/}
-                    {/*            }*/}
-                    {/*        }}*/}
-                    {/*        renderInput={(params) =>*/}
-                    {/*            <TextField {...params} label="Выберите конфигурацию" variant="outlined"/>}*/}
-                    {/*    />*/}
-                    {/*</Grid>*/}
                     <Grid item xs={2}>
                         <Typography variant="h5" component="h2">Конфигурация оборудования</Typography>
                         <Paper className="bg-light pb-2 pt-2">

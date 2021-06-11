@@ -6,5 +6,4 @@ export const defParams =   {
     "furnaceTemperature": 2,
     "furnaceTime": 3,
     "holdTime": 4,
-    "acceptableDeviation": 1
 }

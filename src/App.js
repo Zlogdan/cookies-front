@@ -13,8 +13,8 @@ const NavBar = () => (
     <div>
         <Navbar bg="dark" variant="dark" className="mb-4">
             <Nav className="mr-auto">
-                <li><Link className="navbar-brand" to='/'>Линия производства печенья</Link></li>
-                <li><Link className="nav-link" to='/fake'>Эмулятор оборудования</Link></li>
+                <li><Link className="navbar-brand" to='/'>Линия производства выпечки</Link></li>
+                {/*<li><Link className="nav-link" to='/fake'>Эмулятор оборудования</Link></li>*/}
             </Nav>
         </Navbar>
     </div>

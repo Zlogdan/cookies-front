@@ -1,6 +1,7 @@
 import {Accordion, AccordionDetails, AccordionSummary, Grid, makeStyles, Paper, Typography} from "@material-ui/core";
 import StartCookingProcess from "./StartCookingProcess";
 import LogsTable from "./LogsTable";
+import RecipeEditor from "./RecipeEditor";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,9 +51,11 @@ export default function HomePage() {
                     <Typography className={classes.heading}>Добавление и удаление</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
-                        Добавление и удаление
-                    </Typography>
+                    <Grid container spacing={2}>
+                        <Paper className="bg-light ml-5 pl-2 pb-2 pt-2 mr-5 pr-2">
+                            <RecipeEditor/>
+                        </Paper>
+                    </Grid>
                 </AccordionDetails>
             </Accordion>
         </div>

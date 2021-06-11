@@ -1,6 +1,6 @@
 export const defRecipe =   {
     "id": "",
-    "name": "",
+    "name": "Стандарт",
     "flour": "",
     "water": "",
     "bakingPowder": "",
@@ -16,6 +16,5 @@ export const defRecipe =   {
         "furnaceTemperature": "",
         "furnaceTime": "",
         "holdTime": "",
-        "acceptableDeviation": ""
     }
 }
