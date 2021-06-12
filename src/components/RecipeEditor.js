@@ -217,7 +217,7 @@ class RecipeEditor extends Component {
                         <Button
                             className="mt-2"
                             variant="contained"
-                            color="secondary"
+                            color="default"
                             onClick={() => this.updateParam()}
                         >Сохранить изменения конфигурации
                         </Button>
