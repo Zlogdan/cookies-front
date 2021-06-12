@@ -185,12 +185,12 @@ class RecipeEditor extends Component {
                             <TextField onChange={this.handleInputChange}
                                        value={this.state.bakingPowder} id="bakingPowder"
                                        label="Разрыхлитель/гр"/>
+                            <TextField onChange={this.handleInputChange}
+                                       value={this.state.ferment} id="ferment" label="Дрожжи/гр"/>
                         </Paper>
                     </Grid>
                     <Grid item xs={2}>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField onChange={this.handleInputChange}
-                                       value={this.state.ferment} id="ferment" label="Дрожжи/гр"/>
                             <TextField onChange={this.handleInputChange}
                                        value={this.state.additive} id="additive" label="Добавки"/>
                             <TextField onChange={this.handleInputChange}
@@ -198,12 +198,13 @@ class RecipeEditor extends Component {
                                        label="Добавки кол./гр"/>
                             <TextField onChange={this.handleInputChange}
                                        value={this.state.sugar} id="sugar" label="Сахар/кг"/>
+                            <TextField value={this.state.eggs} id="eggs" label="Яйца/штук"/>
+                            <TextField value={this.state.butter} id="butter" label="Масло/маргарин/кг"/>
                             <TextField onChange={this.handleInputChange}
                                        value={this.state.hardwareParameters} id="hardwareParameters"
                                        label="Номер конфигурации"/>
                         </Paper>
                     </Grid>
-                    <Grid item xs={1}/>
                     <Grid item xs={3}>
                         <Autocomplete
                             size=""
@@ -237,23 +238,23 @@ class RecipeEditor extends Component {
                         <TextField fullWidth={true} value={this.state.delParamId} id="delParamId"
                                    label="id удаляемой конфигурации"/>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={3}>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField onChange={this.handleInputChange} value={this.state.paramId} id="paramId"
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.paramId} id="paramId"
                                        label="Номер конфигурации"/>
-                            <TextField onChange={this.handleInputChange} value={this.state.paramName} id="paramName"
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.paramName} id="paramName"
                                        label="Название"/>
-                            <TextField onChange={this.handleInputChange} value={this.state.mixerPower} id="mixerPower"
-                                       label="Мощность миксера"/>
-                            <TextField onChange={this.handleInputChange} value={this.state.mixerTime} id="mixerTime"
-                                       label="Таймер миксера"/>
-                            <TextField onChange={this.handleInputChange} value={this.state.furnaceTemperature}
-                                       id="furnaceTemperature" label="Температура печи"/>
-                            <TextField onChange={this.handleInputChange} value={this.state.furnaceTime}
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.mixerPower} id="mixerPower"
+                                       label="Мощность миксера/ватт"/>
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.mixerTime} id="mixerTime"
+                                       label="Таймер миксера/мин"/>
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.furnaceTemperature}
+                                       id="furnaceTemperature" label="Температура печи/°C"/>
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.furnaceTime}
                                        id="furnaceTime"
-                                       label="Время работы печи"/>
-                            <TextField onChange={this.handleInputChange} value={this.state.holdTime} id="holdTime"
-                                       label="Время ожидания"/>
+                                       label="Время работы печи/мин"/>
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.holdTime} id="holdTime"
+                                       label="Время ожидания/мин"/>
                         </Paper>
                     </Grid>
                 </Grid>

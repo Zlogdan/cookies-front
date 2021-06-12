@@ -3,7 +3,6 @@ import {Component} from "react";
 import axios from "axios";
 import {Autocomplete} from "@material-ui/lab";
 import {defRecipe} from "../static/defRecipe";
-import {defParams} from "../static/defParams";
 
 const url = 'http://localhost:8080/api/v1/';
 
@@ -16,7 +15,7 @@ class StartCookingProcess extends Component {
             params: null,
             currentParam: defRecipe.hardwareParameters,
             processId: "",
-            processCount:0,
+            processCount: 0,
         };
     }
 
@@ -25,6 +24,7 @@ class StartCookingProcess extends Component {
         // this.getAllParams();
         // this.getProcessCount();
     }
+
     // //
     // getProcessCount() {
     //     let self = this
@@ -43,7 +43,7 @@ class StartCookingProcess extends Component {
                     recipes: response.data,
                 })
             })
-            .catch(e=>{
+            .catch(e => {
                 console.log(e)
                 console.log("Ошибка получения рецептов")
             })
@@ -105,27 +105,47 @@ class StartCookingProcess extends Component {
                     </Grid>
                     <Grid item xs={2}>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.id} id="id" label="Номер рецепта"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.name} id="name" label="Название"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.flour} id="flour" label="Мука/кг"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.water} id="water" label="Вода/литр"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.bakingPowder} id="bakingPowder" label="Разрыхлитель/гр"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.ferment} id="ferment" label="Дрожжи/гр"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additive} id="additive" label="Добавки"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additiveCount} id="additiveCount" label="Добавки кол./гр"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.sugar} id="sugar" label="Сахар/кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.id} id="id"
+                                       label="Номер рецепта"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.name} id="name"
+                                       label="Название"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.flour} id="flour"
+                                       label="Мука/кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.water} id="water"
+                                       label="Вода/литр"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.bakingPowder}
+                                       id="bakingPowder" label="Разрыхлитель/гр"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.ferment}
+                                       id="ferment" label="Дрожжи/гр"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additive}
+                                       id="additive" label="Добавки"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.additiveCount}
+                                       id="additiveCount" label="Добавки кол./гр"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.sugar} id="sugar"
+                                       label="Сахар/кг"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.eggs} id="eggs"
+                                       label="Яйца/штук"/>
+                            <TextField InputProps={{readOnly: true,}} value={this.state.currentRecipe.butter}
+                                       id="butter" label="Масло/маргарин/кг"/>
                         </Paper>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={3}>
                         <Typography variant="h5" component="h2">Конфигурация оборудования</Typography>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.id} id="id" label="Номер конфигурации"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.name} id="name" label="Название"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.mixerPower} id="mixerPower" label="Мощность миксера"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.mixerTime} id="mixerTime" label="Таймер миксера"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTemperature} id="furnaceTemperature" label="Температура печи"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTime} id="furnaceTime" label="Время работы печи"/>
-                            <TextField InputProps={{readOnly: true,}} value={this.state.currentParam.holdTime} id="holdTime" label="Время ожидания"/>
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.id} id="id"
+                                       label="Номер конфигурации"/>
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.name} id="name"
+                                       label="Название"/>
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.mixerPower}
+                                       id="mixerPower" label="Мощность миксера/ватт"/>
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.mixerTime}
+                                       id="mixerTime" label="Таймер миксера/мин"/>
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTemperature}
+                                       id="furnaceTemperature" label="Температура печи/°C"/>
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTime}
+                                       id="furnaceTime" label="Время работы печи/мин"/>
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.holdTime}
+                                       id="holdTime" label="Время ожидания/мин"/>
                         </Paper>
                     </Grid>
                     <Grid item xs={3}>
@@ -136,7 +156,8 @@ class StartCookingProcess extends Component {
                         >Старт процесса
                         </Button>
                         <TextField fullWidth={true} value={this.state.processId} id="processId" label="id процесса"/>
-                        После запуска сверните этот аккаридон и откройте следующий, с таблицей логов запущеного процесса
+                        После запуска сверните этот аккаридон и откройте следующий, с отображением логов запущеного
+                        процесса
                     </Grid>
                 </Grid>
             </div>

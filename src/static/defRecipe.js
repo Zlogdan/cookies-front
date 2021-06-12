@@ -1,6 +1,6 @@
 export const defRecipe =   {
     "id": "",
-    "name": "Стандарт",
+    "name": "",
     "flour": "",
     "water": "",
     "bakingPowder": "",
@@ -8,6 +8,8 @@ export const defRecipe =   {
     "additive": "",
     "additiveCount": "",
     "sugar": "",
+    "eggs": "",
+    "butter":"",
     "hardwareParameters": {
         "id": "",
         "name": "",
