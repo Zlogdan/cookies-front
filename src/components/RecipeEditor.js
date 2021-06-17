@@ -13,6 +13,8 @@ class RecipeEditor extends Component {
         this.state = {
             recipes: [defRecipe,],
             params: [defParams,],
+            newRecipe: null,
+            newParam: null,
             id: "",
             name: "",
             flour: "",
@@ -112,27 +114,87 @@ class RecipeEditor extends Component {
     }
 
     addRecipe() {
-        //todo
+        let self = this
+        axios.post(url + 'add-recipe', this.state.newRecipe)
+            .then((response) => {
+                self.setState({
+                    recipes: response.data,
+                })
+            })
+            .catch(e => {
+                console.log(e)
+                console.log("Ошибка добавления рецепта")
+            })
     }
 
     updateRecipe() {
-        //todo
+        let self = this
+        axios.post(url + 'upd-recipe', this.state.newRecipe)
+            .then((response) => {
+                self.setState({
+                    recipes: response.data,
+                })
+            })
+            .catch(e => {
+                console.log(e)
+                console.log("Ошибка обновления рецепта")
+            })
     }
 
-    deleteRecipe() {
-        //todo
+    deleteRecipe(value) {
+        let self = this
+        axios.get(url + 'del-recipe', {params: {recipeId: value}})
+            .then((response) => {
+                self.setState({
+                    recipes: response.data,
+                })
+            })
+            .catch(e => {
+                console.log(e)
+                console.log("Ошибка удаления рецеата")
+            })
     }
 
     addParam() {
-        //todo
+        let self = this
+        axios.post(url + 'add-param', this.state.newParam)
+            .then((response) => {
+                self.setState({
+                    params: response.data,
+                })
+            })
+            .catch(e => {
+                console.log(e)
+                console.log("Ошибка добавления конфигурации")
+            })
     }
 
     updateParam() {
-        //todo
+        let self = this
+        axios.post(url + 'upd-param', this.state.newParam)
+            .then((response) => {
+                self.setState({
+                    params: response.data,
+                })
+            })
+            .catch(e => {
+                console.log(e)
+                console.log("Ошибка обновления конфигурации")
+            })
     }
 
-    deletePAram() {
-        //todo
+    deletePAram(value) {
+        let self = this
+        axios.get(url + 'del-param', {params: {paramId: value}})
+            .then((response) => {
+                self.setState({
+                    params: response.data,
+                })
+            })
+            .catch(e => {
+                console.log(e)
+                console.log("Ошибка удаления конфигурации")
+            })
     }
 
     render() {
@@ -240,20 +302,27 @@ class RecipeEditor extends Component {
                     </Grid>
                     <Grid item xs={3}>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.paramId} id="paramId"
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange}
+                                       value={this.state.paramId} id="paramId"
                                        label="Номер конфигурации"/>
-                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.paramName} id="paramName"
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange}
+                                       value={this.state.paramName} id="paramName"
                                        label="Название"/>
-                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.mixerPower} id="mixerPower"
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange}
+                                       value={this.state.mixerPower} id="mixerPower"
                                        label="Мощность миксера/ватт"/>
-                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.mixerTime} id="mixerTime"
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange}
+                                       value={this.state.mixerTime} id="mixerTime"
                                        label="Таймер миксера/мин"/>
-                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.furnaceTemperature}
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange}
+                                       value={this.state.furnaceTemperature}
                                        id="furnaceTemperature" label="Температура печи/°C"/>
-                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.furnaceTime}
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange}
+                                       value={this.state.furnaceTime}
                                        id="furnaceTime"
                                        label="Время работы печи/мин"/>
-                            <TextField style={{width: "80%"}} onChange={this.handleInputChange} value={this.state.holdTime} id="holdTime"
+                            <TextField style={{width: "80%"}} onChange={this.handleInputChange}
+                                       value={this.state.holdTime} id="holdTime"
                                        label="Время ожидания/мин"/>
                         </Paper>
                     </Grid>

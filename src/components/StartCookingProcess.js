@@ -21,20 +21,8 @@ class StartCookingProcess extends Component {
 
     componentDidMount() {
         this.getAllRecipe();
-        // this.getAllParams();
-        // this.getProcessCount();
     }
 
-    // //
-    // getProcessCount() {
-    //     let self = this
-    //     axios.get(urlCamunda + 'process-instance/count', {})
-    //         .then((response) => {
-    //             self.setState({
-    //                 processCount: response.data.count,
-    //             })
-    //         })
-    // }
     getAllRecipe() {
         let self = this
         axios.get(url + 'get-all-recipe', {})
@@ -48,16 +36,6 @@ class StartCookingProcess extends Component {
                 console.log("Ошибка получения рецептов")
             })
     }
-
-    // getAllParams() {
-    //     let self = this
-    //     axios.get(url + 'get-all-params', {})
-    //         .then((response) => {
-    //             self.setState({
-    //                 params: response.data,
-    //             })
-    //         })
-    // }
 
     getCamundaProcess() {
         let self = this
@@ -132,19 +110,26 @@ class StartCookingProcess extends Component {
                     <Grid item xs={3}>
                         <Typography variant="h5" component="h2">Конфигурация оборудования</Typography>
                         <Paper className="bg-light pb-2 pt-2">
-                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.id} id="id"
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}}
+                                       value={this.state.currentParam.id} id="id"
                                        label="Номер конфигурации"/>
-                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.name} id="name"
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}}
+                                       value={this.state.currentParam.name} id="name"
                                        label="Название"/>
-                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.mixerPower}
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}}
+                                       value={this.state.currentParam.mixerPower}
                                        id="mixerPower" label="Мощность миксера/ватт"/>
-                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.mixerTime}
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}}
+                                       value={this.state.currentParam.mixerTime}
                                        id="mixerTime" label="Таймер миксера/мин"/>
-                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTemperature}
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}}
+                                       value={this.state.currentParam.furnaceTemperature}
                                        id="furnaceTemperature" label="Температура печи/°C"/>
-                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.furnaceTime}
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}}
+                                       value={this.state.currentParam.furnaceTime}
                                        id="furnaceTime" label="Время работы печи/мин"/>
-                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}} value={this.state.currentParam.holdTime}
+                            <TextField style={{width: "80%"}} InputProps={{readOnly: true,}}
+                                       value={this.state.currentParam.holdTime}
                                        id="holdTime" label="Время ожидания/мин"/>
                         </Paper>
                     </Grid>
